@@ -4,6 +4,13 @@
   "engines": {
     "node": "14.18.1"
   },
+  "scripts": {
+    "develop": "NODE_ENV=development lerna run develop --parallel",
+    "lerna:bootstrap": "lerna bootstrap --ignore-prepublish",
+    "lerna:build": "learn run build",
+    "docker:up": "docker compose up -d",
+    "docker:db": "lerna run db:create"
+  },
   "devDependencies": {
     "lerna": "^4.0.0"
   }

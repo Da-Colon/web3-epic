@@ -1,14 +1,12 @@
 {
-  "name": "web3-indexer",
+  "name": "interactions-api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "develop": "npm run docker:database & NODE_ENV=development nodemon app.ts ",
+    "develop": "npm run docker:up & NODE_ENV=development nodemon app.ts ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker:database": "docker-compose up -d",
-    "docker:build": "docker build . -t web3-indexer",
-    "docker:run": "docker run -p 8080:8080 -d  web3-indexer",
+    "docker:up": "docker-compose up -d",
     "db:create": "sequelize-cli db:create"
   },
   "engines": {

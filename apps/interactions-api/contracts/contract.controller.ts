@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { ethers } from "ethers";
 import express from "express";
 import FetchDataServices from "../services/FetchDataServices";
-import { mapAddresses} from "../utils";
+import { mapAddresses } from "../utils";
 import Web3Services from "../web3/Web3Services";
 import EtherScanServices, { EtherScanScope } from "../thirdPartyServices/EtherScanServices";
 import TokensServices from "../tokens/TokensServices";
@@ -12,9 +12,9 @@ export async function interactions(req: express.Request, res: express.Response) 
   const provider = req.app.locals.provider as ethers.providers.Provider;
   const contractAddress = req.params.address;
   const sequelize = req.app.locals.sequelize;
-  const { numberOfAccounts } = req.query
-  let accountsLength: number
-  if(numberOfAccounts) {
+  const { numberOfAccounts } = req.query;
+  let accountsLength: number;
+  if (numberOfAccounts) {
     accountsLength = Number(numberOfAccounts) > 50 ? 50 : Number(numberOfAccounts);
   } else {
     accountsLength = 100;
@@ -38,7 +38,11 @@ export async function interactions(req: express.Request, res: express.Response) 
 
   // find last 100000 transactions (quote limit)
   console.info(chalk.blue("step 1 of 10"));
-  const fetchedTransactions = await EtherScanServices.fetchTransactions(contractAddress, provider, EtherScanScope.SemiRecent);
+  const fetchedTransactions = await EtherScanServices.fetchTransactions(
+    contractAddress,
+    provider,
+    EtherScanScope.SemiRecent
+  );
 
   //! if error fetching return error
   if (fetchedTransactions.error) {
@@ -56,7 +60,9 @@ export async function interactions(req: express.Request, res: express.Response) 
   const mappedAddresses = mapAddresses(fetchedTransactions.transactions, contractAddress);
   // filter 10 unique addresses
   console.info(chalk.blue("step 3 of 10"));
-  const interactedAddresses = mappedAddresses.filter((_: string, index: number) => index <= accountsLength - 1);
+  const interactedAddresses = mappedAddresses.filter(
+    (_: string, index: number) => index <= accountsLength - 1
+  );
 
   // for each address retreive token retreive contract interactions
   console.info(chalk.blue("step 4 of 10"));
@@ -67,7 +73,11 @@ export async function interactions(req: express.Request, res: express.Response) 
         const step = 0;
         // find last 100000 transactions (quote limit)
         console.info(chalk.blue(`(${index}) address: ${walletAddress} ${step + 1} of 6`));
-        const fetchedTransactions = await EtherScanServices.fetchTransactions(walletAddress, provider, EtherScanScope.LifeTime);
+        const fetchedTransactions = await EtherScanServices.fetchTransactions(
+          walletAddress,
+          provider,
+          EtherScanScope.LifeTime
+        );
 
         //! if error fetching return error
         if (fetchedTransactions.error) {
@@ -125,7 +135,7 @@ export async function interactions(req: express.Request, res: express.Response) 
           },
         };
       };
-      return new Promise((resolve) => {
+      return await new Promise((resolve) => {
         setTimeout(() => resolve(getInteractions()), index * 3500);
       });
     })

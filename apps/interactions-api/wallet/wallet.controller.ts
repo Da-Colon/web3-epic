@@ -62,15 +62,14 @@ export async function interactions(req: express.Request, res: express.Response) 
   const [knownTokenData, unknownAddresses, knownContracts] = await FetchDataServices.checkForTokenData(
     mapppedAddresses,
     sequelize
-  );
-  const filteredFalse = unknownAddresses.filter((v: any) => v) as string[];
-  // const filteredUnknownAddresses = filteredFalse.filter((_: any, i: number) => i <= 40) as string[];
-
-  // for each transaction unknown contract address for erc20 tokens (coin gecko verified)
-  console.info(chalk.blue("step 5 of 7"));
-  const [nonERC20Contracts, erc20Tokens] = await FetchDataServices.checkForUnknownTokenData(filteredFalse);
-  const filteredErc20Tokens = erc20Tokens.filter((v: any) => v);
-
+    );
+    const filteredFalse = unknownAddresses.filter((v: any) => v) as string[];
+    
+    // for each transaction unknown contract address for erc20 tokens (coin gecko verified)
+    console.info(chalk.blue("step 5 of 7"));
+    const [nonERC20Contracts, erc20Tokens] = await FetchDataServices.checkForUnknownTokenData(filteredFalse);
+    const filteredErc20Tokens = erc20Tokens.filter((v: any) => v);
+    
   // //! if no token interactions detected return error
   if (!filteredErc20Tokens.length && !knownTokenData.length) {
     console.info(chalk.red("no contract interactions with this address"));

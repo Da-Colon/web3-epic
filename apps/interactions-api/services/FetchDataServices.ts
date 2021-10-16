@@ -7,11 +7,13 @@ class FetchDataServices {
     const nonERC20Contracts = [];
     const erc20Tokens = await Promise.all(
       unknownAddresses.map(async (address: string, index: number) => {
-        const { isToken, tokenData }: any = () =>
-          new Promise((resolve) => {
-            setTimeout(() => resolve(CoinGeckoServices.fetchCoinGeckoTokenData(address)), index * 1000);
+        const { isToken, tokenData }: any = await new Promise((resolve) => {
+          setTimeout(
+            async () => resolve(await CoinGeckoServices.fetchCoinGeckoTokenData(address)),
+            index * 1500
+            );
           });
-        if (isToken) {
+          if (isToken) {
           return tokenData;
         }
         nonERC20Contracts.push(address);
