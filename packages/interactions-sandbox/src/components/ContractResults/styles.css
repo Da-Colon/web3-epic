@@ -1,0 +1,10 @@
+.results-wrapper {
+  width: 21rem;
+  min-height: 8rem;
+  padding: 1em 2rem;
+  border: 1px groove var(--black-color);
+  border-radius: 8px;
+  background-color: var(--white-color);
+  margin: 1em;
+  box-shadow: 1px 2px 5px rgba(255, 255, 255, 1), 6px 6px 8px rgba(255, 255, 255, 0.2);
+}
