@@ -1,14 +1,23 @@
+import { FC } from "react";
 import Web3Interactions from "../../components/Web3Interactions";
-import "./styles.css";
 
+export enum SandboxOptions {
+  Interactions,
+  None,
+}
 
-const Sandbox = () => {
+interface SandboxProps {
+  sandbox: SandboxOptions;
+}
 
-  return (
-    <section className="sandbox-wrapper">
-      <Web3Interactions />
-    </section>
-  );
+const Sandbox: FC<SandboxProps> = ({ sandbox }) => {
+  switch (sandbox) {
+    case SandboxOptions.Interactions:
+      return <Web3Interactions />;
+    default: {
+      return null;
+    }
+  }
 };
 
 export default Sandbox;

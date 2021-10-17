@@ -1,9 +1,7 @@
-import './styles.css'
-
 const Header = () => {
   return (
-    <div className="header-container">
-      <h1>web3 interactions sandbox</h1>
+    <div className="flex justify-center">
+      <h1 className="text-white my-4 text-lg font-bold tracking-wider">epic-sandbox</h1>
     </div>
   );
 };

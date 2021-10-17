@@ -1,35 +1,31 @@
 import useWeb3Interactions from "../../hooks/useWeb3Interactions";
-import ContractForm from "../ContractForm";
-import ContractResults from "../ContractResults";
-import WalletResults from "../WalletResults";
-import WalletForm from "../WalletForm";
-import "./styles.css";
+// import ContractResults from "../ContractResults";
+import WalletResults from "../Results/WalletResults";
+import Form, { InteractionsFormTypes } from "../Form";
 
 const Web3Interactions = () => {
   const Web3Interactions = useWeb3Interactions();
   return (
-    <div className="web3-interactions-wrapper">
-      <section>
-        <WalletForm
+    <div className="flex flex-col gap-8">
+      <section className="flex">
+        <Form
+          formType={InteractionsFormTypes.Wallets}
           handleSubmit={Web3Interactions.fetchWalletInteractions}
           address="0x930aF7923B8B5F8d3461ad1999CEEB8a62884b19"
         />
-        <ContractForm
+        <Form
+          formType={InteractionsFormTypes.Contracts}
           handleSubmit={Web3Interactions.fetchContractInteractions}
           numOfAccounts="10"
           address="0x7697b462a7c4ff5f8b55bdbc2f4076c2af9cf51a"
         />
       </section>
-      <section>
+      <section className="flex">
         <WalletResults
           error={Web3Interactions.error}
           isTokenLoading={Web3Interactions.isTokenLoading}
+          // isTokenLoading={true}
           walletResults={Web3Interactions.walletResults}
-        />
-        <ContractResults
-          contractResults={Web3Interactions.contractResults}
-          isContractLoading={Web3Interactions.isContractLoading}
-          error={Web3Interactions.error}
         />
       </section>
     </div>

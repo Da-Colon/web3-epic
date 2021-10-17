@@ -1,14 +1,6 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --ebony-color: #555d50;
@@ -18,4 +10,8 @@ code {
   --purple-color: #40047b;
   --yellow-color: #ffd700;
   --gray-color: #aaaaaa;
+}
+
+.text-overflow {
+  text-overflow: ellipsis;
 }
