@@ -12,7 +12,7 @@ module.exports = {
     "test": {
       "username": process.env.POSTGRES_USER || "postgres",
       "password": process.env.POSTGRES_PASSWORD,
-      "database": 'web3-interactions-test',
+      "database": 'interactions-test',
       "host": process.env.POSTGRES_HOST || "localhost",
       "port": process.env.POSTGRES_PORT || "5432",
       "dialect": "postgres",
@@ -20,7 +20,7 @@ module.exports = {
     "production": {
       "username": process.env.POSTGRES_USER || "postgres",
       "password": process.env.POSTGRES_PASSWORD,
-      "database": web3-interactions-prod,
+      "database": 'interactions-prod',
       "host": process.env.POSTGRES_HOST || "localhost",
       "port": process.env.POSTGRES_PORT || "5432",
       "dialect": "postgres",

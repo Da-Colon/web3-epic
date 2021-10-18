@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize/types";
-import { ContractModal } from "./contracts";
-import { MigrationsModel } from "./migrations";
-import { TokenModel } from "./tokens";
+import { ContractModal } from "./models/contracts";
+import { MigrationsModel } from "./models/migrations";
+import { TokenModel } from "./models/tokens";
 
 export function modalsInit(sequelize: Sequelize) {
   // token modal
@@ -14,5 +14,4 @@ export function modalsInit(sequelize: Sequelize) {
   Migrations.sync({ alter: true })
   // todo contract modal
   // todo user address modal
-
 }

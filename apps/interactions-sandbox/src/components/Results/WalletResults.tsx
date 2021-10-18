@@ -11,7 +11,7 @@ interface ResultsDisplayProps {
 
 const ResultsDisplay: FC<ResultsDisplayProps> = ({ walletResults, isTokenLoading, error }) => {
   if (isTokenLoading) {
-    return <Loader option={LoaderOptions.Standard} />;
+    return <Loader option={LoaderOptions.RickedRoll} />;
   }
   if (error) {
     return <div className="">{error}</div>;

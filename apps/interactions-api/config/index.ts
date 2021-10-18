@@ -12,7 +12,7 @@ const config: Config = {
     host: process.env.POSTGRES_HOST || "localhost",
     user: process.env.POSTGRES_USER || "postgres",
     password: process.env.POSTGRES_PASSWORD,
-    name: process.env.POSTGRES_DB || "",
+    name: process.env.POSTGRES_DB || "interactions-api",
     port: process.env.POSTGRES_PORT || "5432",
     dialect: "postgres",
   },

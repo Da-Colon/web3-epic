@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import express from 'express';
 import config from ".";
 import chalk from "chalk";
-import { modalsInit } from "../models";
+import { modalsInit } from "@epic/epic-db-models";
 
 export function init(app: express.Application) {
   const { database } = config;
@@ -19,6 +19,6 @@ export function init(app: express.Application) {
     // :define modals
     modalsInit(sequelize)
     app.locals.sequelize = sequelize;
-  })
+  }).catch(console.error)
 }
   // todo :initialize migrations
