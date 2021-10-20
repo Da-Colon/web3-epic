@@ -7,7 +7,7 @@
   "scripts": {
     "develop": "npm run docker:up & NODE_ENV=development lerna run develop --parallel",
     "lerna:bootstrap": "lerna bootstrap --ignore-prepublish",
-    "lerna:build": "learn run build",
+    "lerna:build": "lerna run build",
     "docker:up": "docker compose up -d",
     "docker:db": "lerna run db:create"
   },
