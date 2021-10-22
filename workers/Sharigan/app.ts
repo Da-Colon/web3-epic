@@ -19,4 +19,5 @@ import * as Web3 from "./web3/web3.utils"
   // initialize blockchain indexer routes
   // initialize server
   Application.init(app);
+  Web3.fetchBlockChainData(app)
 })()

@@ -1,24 +1,25 @@
 import { useState } from "react";
 import classnames from "classnames";
 import { Token as TokenType } from "../../types/web3Interactions";
+import { truncateString } from "../../utils";
 
 const Token = ({ token }: { token: TokenType }) => {
   const [isExpanded, setExpand] = useState(false);
   return (
     <div
       key={token.id}
-      className={classnames("flex w-64 p-4 rounded-lg justify-center items-center bg-black", {
+      className={classnames("flex w-64 p-4 rounded-lg justify-center items-center bg-black cursor-pointer", {
         "w-full p-8": isExpanded,
       })}
       onClick={() => setExpand((v) => !v)}
     >
-      <div className="w-16 h-16 rounded-full overflow-hidden">
+      <div className="w-16 h-12 rounded-full overflow-hidden">
         <img alt="" className="h-full w-full" src={token?.image || ""} />
       </div>
       <div className="w-full px-8 flex flex-col text-white">
         <div>
-          <div className="font-bold text-xs">{token?.name}</div>
           <div className="uppercase">({token?.symbol})</div>
+          <div className="font-bold text-xs">{!isExpanded && token?.name ? truncateString(token?.name || "") : token?.name}</div>
         </div>
         {isExpanded && (
           <div>

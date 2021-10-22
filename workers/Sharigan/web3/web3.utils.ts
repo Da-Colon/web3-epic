@@ -14,6 +14,7 @@ export async function fetchBlockChainData(app: express.Application) {
   // recursive function update current block
   const provider = app.locals.provider as ethers.providers.Provider
   const currentBlock = await provider.getBlockNumber()
+  // const block = await provider.
   if(app.locals.currentBlock === currentBlock) {
     setTimeout(async () => await fetchBlockChainData(app), 10000)
     return;
