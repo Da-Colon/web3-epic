@@ -10,7 +10,7 @@ class FetchDataServices {
         const { isToken, tokenData }: any = await new Promise((resolve) => {
           setTimeout(
             async () => resolve(await CoinGeckoServices.fetchCoinGeckoTokenData(address)),
-            index * 1500
+            index * 10000
             );
           });
           if (isToken) {
