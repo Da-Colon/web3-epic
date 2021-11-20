@@ -1,11 +1,13 @@
 import express from "express";
-import * as Database from "./config/database.init";
+import DBConnection from "./database/connection";
 import * as Application from "./config/app.init";
 import * as Web3 from "./web3/web3.utils"
+
 (async () => {
   const app = express();
   // initialize database
-  Database.init(app);
+  const dbConnection = new DBConnection(app)
+  await dbConnection.init();
 
   // initialize web3 provider
   Web3.init(app);
