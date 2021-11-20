@@ -1,7 +1,7 @@
 import express from "express";
 
 import DBConnection from "./database/connection";
-import ExpressApplication from "./config/app.init";
+import ExpressApplication from "./application";
 import Web3Provider from "./web3/Web3Provider"
 // todo :initialize redis
 

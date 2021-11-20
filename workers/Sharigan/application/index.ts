@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import http from "http";
-import config from ".";
+import config from "../config";
 import chalk from "chalk";
 import corsOptions from "cors";
 

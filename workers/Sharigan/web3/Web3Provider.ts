@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { ethers } from "ethers";
 import express from "express";
-import config from "../config";
+import config from "../config"; 
 
 export default class Web3Provider {
   app: express.Application;
