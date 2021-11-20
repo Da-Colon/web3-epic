@@ -1,18 +1,19 @@
 import express from "express";
 import DBConnection from "./database/connection";
 import * as Application from "./config/app.init";
-import * as Web3 from "./web3/web3.utils"
+import Web3Provider from "./web3/Web3Provider"
+// todo :initialize redis
 
 (async () => {
   const app = express();
-  // initialize database
   const dbConnection = new DBConnection(app)
+  const web3Provider = new Web3Provider(app);
+  
+  // initialize database
   await dbConnection.init();
-
   // initialize web3 provider
-  Web3.init(app);
+  web3Provider.init()
 
-  // todo :initialize redis
   // initialize cors
   Application.cors(app);
   // initialize services
@@ -21,5 +22,4 @@ import * as Web3 from "./web3/web3.utils"
   // initialize blockchain indexer routes
   // initialize server
   Application.init(app);
-  Web3.fetchBlockChainData(app)
 })()
