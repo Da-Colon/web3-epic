@@ -53,7 +53,7 @@ export default class ExpressApplication {
     server.listen(port);
     server.on("error", this.onError);
     server.on("listening", () => {
-      console.info(chalk.bold.white(`[web3-indexer] is listening on ${config.port}.`));
+      console.info(chalk.bold.white(`[sharigan] is listening on ${config.port}.`));
     });
   }
 }

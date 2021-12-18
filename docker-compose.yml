@@ -9,5 +9,12 @@ services:
       - database-indexer:/var/lib/postgresql/data/ # persist data even if container shuts down
     ports:
       - '5432:5432'
+  mongo-database:
+    image: "mongo"
+    volumes:
+      - database-sharigan:/var/lib/mongodb/data/ # persist data even if container shuts down
+    ports:
+      - 27017:27017
 volumes:
   database-indexer: # named volumes can be managed easier using docker-compose
+  database-sharigan: #

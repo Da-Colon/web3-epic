@@ -9,12 +9,11 @@ const config: Config = {
   coinGeckoURL: "https://api.coingecko.com/api/v3",
   infuraURL: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
   database: {
-    host: process.env.POSTGRES_HOST || "localhost",
-    user: process.env.POSTGRES_USER || "postgres",
-    password: process.env.POSTGRES_PASSWORD,
-    name: process.env.POSTGRES_DB || "",
-    port: process.env.POSTGRES_PORT || "5432",
-    dialect: "postgres",
+    host: process.env.MONGO_HOST || "localhost",
+    user: process.env.MONGO_USER || "",
+    password: process.env.MONGO_PASSWORD || "",
+    name: process.env.MONGO_DB || "",
+    port: process.env.MONGO_PORT || "27017",
   },
   web3: {
     chainId: "1",
